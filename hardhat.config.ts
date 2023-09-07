@@ -25,7 +25,10 @@ export default {
             return {
                 ECRECOVER_COST_GAS: systemConfig.ECRECOVER_COST_GAS,
                 KECCAK_ROUND_COST_GAS: systemConfig.KECCAK_ROUND_COST_GAS,
-                SHA256_ROUND_COST_GAS: systemConfig.SHA256_ROUND_COST_GAS
+                SHA256_ROUND_COST_GAS: systemConfig.SHA256_ROUND_COST_GAS,
+                native_name: systemConfig.native_name,
+                native_symbol: systemConfig.native_symbol,
+                decimals: systemConfig.decimals
             }
         })()
     },

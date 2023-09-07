@@ -75,3 +75,7 @@ bytes32 constant CREATE2_PREFIX = 0x2020dba91b30cc0006188af794c2fb30dd8520db7e2c
 /// @dev Prefix used during derivation of account addresses using CREATE
 /// @dev keccak256("zksyncCreate")
 bytes32 constant CREATE_PREFIX = 0x63bae3a9951d38e8a3fbb7b70909afc1200610fc5bc55ade242f815974674f23;
+
+string constant native_name=$(native_name);
+string constant native_symbol=$(native_symbol);
+uint8 constant decimals=$(decimals);

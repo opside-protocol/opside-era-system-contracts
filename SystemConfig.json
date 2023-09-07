@@ -13,5 +13,8 @@
   "REFUND_GAS": 7343,
   "KECCAK_ROUND_COST_GAS": 40,
   "SHA256_ROUND_COST_GAS": 7,
-  "ECRECOVER_COST_GAS": 1112
+  "ECRECOVER_COST_GAS": 1112,
+  "native_name": "\"IDE\"",
+  "native_symbol": "\"IDE\"",
+  "decimals": 18
 }

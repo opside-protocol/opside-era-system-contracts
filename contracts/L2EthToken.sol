@@ -3,7 +3,7 @@
 pragma solidity ^0.8.0;
 
 import {IEthToken} from "./interfaces/IEthToken.sol";
-import {MSG_VALUE_SYSTEM_CONTRACT, DEPLOYER_SYSTEM_CONTRACT, BOOTLOADER_FORMAL_ADDRESS, L1_MESSENGER_CONTRACT} from "./Constants.sol";
+import {MSG_VALUE_SYSTEM_CONTRACT, DEPLOYER_SYSTEM_CONTRACT, BOOTLOADER_FORMAL_ADDRESS, L1_MESSENGER_CONTRACT, native_name, native_symbol, decimals} from "./Constants.sol";
 import {SystemContractHelper} from "./libraries/SystemContractHelper.sol";
 import {IMailbox} from "./interfaces/IMailbox.sol";
 
@@ -102,18 +102,20 @@ contract L2EthToken is IEthToken {
     /// @dev This method has not been stabilized and might be
     /// removed later on.
     function name() external pure override returns (string memory) {
-        return "Ether";
+        // return "Ether";
+        return native_name;
     }
 
     /// @dev This method has not been stabilized and might be
     /// removed later on.
     function symbol() external pure override returns (string memory) {
-        return "ETH";
+        // return "ETH";
+        return native_symbol;
     }
 
     /// @dev This method has not been stabilized and might be
     /// removed later on.
     function decimals() external pure override returns (uint8) {
-        return 18;
+        return decimals;
     }
 }
