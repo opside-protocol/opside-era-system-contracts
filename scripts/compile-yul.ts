@@ -58,9 +58,9 @@ function preparePaths(path: string, files: string[], outputDirName: string | nul
         })
         .join(' ');
     const outputDir = outputDirName || files[0];
-    let absolutePathSources = `${process.env.ZKSYNC_HOME}/etc/system-contracts/${path}`;
+    let absolutePathSources = `${path}`;
 
-    let absolutePathArtifacts = `${process.env.ZKSYNC_HOME}/etc/system-contracts/${path}/artifacts`;
+    let absolutePathArtifacts = `${path}/artifacts`;
 
     return new CompilerPaths(filePaths, outputDir, absolutePathSources, absolutePathArtifacts);
 }
@@ -83,7 +83,6 @@ async function main() {
     await compileYulFolder('contracts');
     await compileYulFolder('contracts/precompiles');
     await compileYulFolder('bootloader/build');
-    await compileYulFolder('bootloader/tests');
 }
 
 main()
