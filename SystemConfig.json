@@ -16,5 +16,6 @@
   "ECRECOVER_COST_GAS": 1112,
   "native_name": "\"IDE\"",
   "native_symbol": "\"IDE\"",
-  "decimals": 18
+  "decimals": 18,
+  "gas_token_address": "0x0000000000000000000000000000000000000000"
 }

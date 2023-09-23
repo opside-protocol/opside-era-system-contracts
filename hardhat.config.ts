@@ -28,7 +28,8 @@ export default {
                 SHA256_ROUND_COST_GAS: systemConfig.SHA256_ROUND_COST_GAS,
                 native_name: process.env.native_name ? process.env.native_name : systemConfig.native_name,
                 native_symbol: process.env.native_symbol ? process.env.native_symbol : systemConfig.native_symbol,
-                decimals: process.env.decimals ? process.env.decimals : systemConfig.decimals
+                decimals: process.env.decimals ? process.env.decimals : systemConfig.decimals,
+                gas_token_address: process.env.gas_token_address ? process.env.gas_token_address : systemConfig.gas_token_address,
             }
         })()
     },

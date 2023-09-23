@@ -79,3 +79,4 @@ bytes32 constant CREATE_PREFIX = 0x63bae3a9951d38e8a3fbb7b70909afc1200610fc5bc55
 string constant native_name=$(native_name);
 string constant native_symbol=$(native_symbol);
 uint8 constant decimals=$(decimals);
+address constant GAS_TOKEN_ADDRESS=address($(gas_token_address));

@@ -3,9 +3,10 @@
 pragma solidity ^0.8.0;
 
 import {IEthToken} from "./interfaces/IEthToken.sol";
-import {MSG_VALUE_SYSTEM_CONTRACT, DEPLOYER_SYSTEM_CONTRACT, BOOTLOADER_FORMAL_ADDRESS, L1_MESSENGER_CONTRACT, native_name, native_symbol, decimals} from "./Constants.sol";
+import {MSG_VALUE_SYSTEM_CONTRACT, DEPLOYER_SYSTEM_CONTRACT, BOOTLOADER_FORMAL_ADDRESS, L1_MESSENGER_CONTRACT, native_name, native_symbol, decimals, GAS_TOKEN_ADDRESS} from "./Constants.sol";
 import {SystemContractHelper} from "./libraries/SystemContractHelper.sol";
 import {IMailbox} from "./interfaces/IMailbox.sol";
+import {IL1Bridge} from "./interfaces/IL1Bridge.sol";
 
 /**
  * @author Matter Labs
@@ -88,15 +89,19 @@ contract L2EthToken is IEthToken {
         }
 
         // Send the L2 log, a user could use it as proof of the withdrawal
-        bytes memory message = _getL1WithdrawMessage(_l1Receiver, amount);
+        bytes memory message = _getL1WithdrawMessage(_l1Receiver, GAS_TOKEN_ADDRESS, amount);
         L1_MESSENGER_CONTRACT.sendToL1(message);
 
         emit Withdrawal(msg.sender, _l1Receiver, amount);
     }
 
     /// @dev Get the message to be sent to L1 to initiate a withdrawal.
-    function _getL1WithdrawMessage(address _to, uint256 _amount) internal pure returns (bytes memory) {
-        return abi.encodePacked(IMailbox.finalizeEthWithdrawal.selector, _to, _amount);
+    function _getL1WithdrawMessage(address _to, address _l1Token, uint256 _amount) internal pure returns (bytes memory) {
+        if (GAS_TOKEN_ADDRESS == address(0)) {
+            return abi.encodePacked(IMailbox.finalizeEthWithdrawal.selector, _to, _amount);
+        }
+
+        return abi.encodePacked(IL1Bridge.finalizeWithdrawal.selector, _to, _l1Token, _amount);
     }
 
     /// @dev This method has not been stabilized and might be
